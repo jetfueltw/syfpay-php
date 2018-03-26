@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         syntaxCheck="false">
+    <testsuites>
+        <testsuite name="Unit Test">
+            <directory suffix=".php">./tests/</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+        <env name="MERCHANT_NO" value="SYF201803080000"/>
+        <env name="MD5_KEY" value="161658270F6D258D64026E25EE78A0CB"/>
+        <env name="MERCHANT_PRIVATE_KEY" value="-----BEGIN RSA PRIVATE KEY-----&#10;MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBANGY5aX3uEYJ/CyE53wNNOg1O3P/&#10;JyDSgR2QaNtOGwpcm7YPLlWnM4Bp/Oe6Pe0E7J//zRjOixedymUFHcLwjEEav9P6xcIsP/8CXm4e&#10;VfoC3WgNVOoONlepUnGVHsiek1gOWmym/4wMGw9iCAbDGM1l/ZC9ql8wCpkbkLw1VeMjAgMBAAEC&#10;gYEApNEVrRgKCNFrQlrUaQE9nGfXs5Rt4WqG64eWXPWjX9eI/nYbmnEbl5xAqrwSXCKmK/8L+bjZ&#10;OZ3z/NI0IAnmTxN1zLnG9SSCej5d4ahaEDBZ+YvO7Em1yjkMKMk1KOGMrJiBFElE8dLfBXWZzAvf&#10;eX36E5cwA9RJnNJXglnBteECQQDqB7rCgjPzGuIabJWYb1LskH5FubanmFm1M5HWoNBrWOXmVpHR&#10;DUhWWR53JDaNbS1gLPFcdKmjTawIaKv8RuqRAkEA5UX9PCj0e1f/CEM7sCQZEwBPV15HZt16GiPS&#10;jHHeRrP+siSWMrVQFb7My7ey340gt+lsJ1DJc/kKzPG5tmxEcwJAPvWrYa6jiTBfSZqSuDqixW+t&#10;+NYYdIgBAkWIY4RJ7ccxukDp46K+JjS9hHHilzOa9HfCywu7o2o+8NgwBKOTcQJBALV/34XFgi02&#10;rx0yZEj/ep4RK74lU276O5P/8cjex7C/Awyxa/m+kSR1xBgtVzwjs9gDwGurR584crVlUrg4I0MC&#10;QBsrE547afCMYQTY848BUst6WYRk1NCNzoc9CxbTvKde2u5mkXsAOmBVR2i6fe9LFfvNTMiqvgiE&#10;HBx/kfqhx4Y=&#10;-----END RSA PRIVATE KEY-----"/>
+        <env name="MERCHANT_PAY_PUBLIC_KEY" value="-----BEGIN PUBLIC KEY-----&#10;MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCQ5r7lx9TcK2I8ZCTnFqKofVhWF5o+VHhJBy1e&#10;G3Upw/L2tv7eS0iCLiW6mi0C7V4SwH1n66OZl+QW48nW624i9K5WqJMmvEYyOVswXyXIhDD1Spxw&#10;bk2ou/pUhOBr1XseDUTUUPAf3WICpUmYj+5MClDsHcjUL4z5lD2kpCk5JwIDAQAB&#10;-----END PUBLIC KEY-----"/>
+    </php>
+</phpunit>
