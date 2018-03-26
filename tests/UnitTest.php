@@ -35,12 +35,11 @@ class UnitTest extends TestCase
         $tradeNo = date('YmdHis').rand(10000, 99999);
         $channel = Channel::ALIPAY;
         $amount = 1;
-        $clientIp = $faker->ipv4;
         $notifyUrl = $faker->url;
         $returnUrl = $faker->url;
 
     $payment = new DigitalPayment($this->merchantId, $this->secretKey, $this->merchantPrivateKey, $this->merchantPayPublicKey/*, 'http://wx.637pay.com/'*/);
-        $result = $payment->order($tradeNo, $channel, $amount, $clientIp, $notifyUrl, $returnUrl);
+        $result = $payment->order($tradeNo, $channel, $amount, $notifyUrl, $returnUrl);
 
         var_dump($result);
 
