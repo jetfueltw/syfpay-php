@@ -4,10 +4,11 @@ namespace Jetfuel\Syfpay\Constants;
 
 class BaseUrl
 {
-    const QUERY = 'http://payquery.qyfpay.com:90/';
+    const QUERY = 'http://payquery.637pay.com/';
     const URL = [
-        Channel::WECHAT => 'http://wx.qyfpay.com:90/',
-        Channel::ALIPAY => 'http://zfb.qyfpay.com:90/',
-        Channel::QQ     => 'http://qq.qyfpay.com:90/',
+        Channel::WECHAT => 'http://wx.637pay.com/',
+        Channel::ALIPAY => 'http://zfb.637pay.com/',
+        Channel::QQ     => 'http://qq.637pay.com/',
+        Channel::JD     => 'http://jd.637pay.com/',
     ];
 }

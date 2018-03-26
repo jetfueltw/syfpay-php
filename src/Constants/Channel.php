@@ -18,4 +18,9 @@ class Channel
      * QQ錢包
      */
     const QQ = 'QQ';
+
+    /**
+     * 京東支付
+     */
+    const JD = 'JD';
 }

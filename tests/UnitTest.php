@@ -39,7 +39,7 @@ class UnitTest extends TestCase
         $notifyUrl = $faker->url;
         $returnUrl = $faker->url;
 
-    $payment = new DigitalPayment($this->merchantId, $this->secretKey, $this->merchantPrivateKey, $this->merchantPayPublicKey, 'http://wx.637pay.com/');
+    $payment = new DigitalPayment($this->merchantId, $this->secretKey, $this->merchantPrivateKey, $this->merchantPayPublicKey/*, 'http://wx.637pay.com/'*/);
         $result = $payment->order($tradeNo, $channel, $amount, $clientIp, $notifyUrl, $returnUrl);
 
         var_dump($result);
@@ -60,7 +60,7 @@ class UnitTest extends TestCase
         $amount = 1;
         $payDate = date('Y-m-d');
 
-        $tradeQuery = new TradeQuery($this->merchantId, $this->secretKey, $this->merchantPrivateKey, $this->merchantPayPublicKey, 'http://wx.637pay.com/'); 
+    $tradeQuery = new TradeQuery($this->merchantId, $this->secretKey, $this->merchantPrivateKey, $this->merchantPayPublicKey/*, 'http://wx.637pay.com/'*/); 
         $result = $tradeQuery->find($tradeNo, $channel, $amount, $payDate);
         
 
@@ -79,7 +79,7 @@ class UnitTest extends TestCase
         $amount = 1;
         $payDate = date('Y-m-d');
 
-        $tradeQuery = new TradeQuery($this->merchantId, $this->secretKey, $this->merchantPrivateKey, $this->merchantPayPublicKey, 'http://wx.637pay.com/');
+    $tradeQuery = new TradeQuery($this->merchantId, $this->secretKey, $this->merchantPrivateKey, $this->merchantPayPublicKey/*, 'http://wx.637pay.com/'*/);
         $result = $tradeQuery->isPaid($tradeNo, $channel, $amount, $payDate);
 
         var_dump($result);
