@@ -10,5 +10,6 @@ class BaseUrl
         Channel::ALIPAY => 'http://zfb.637pay.com/',
         Channel::QQ     => 'http://qq.637pay.com/',
         Channel::JD     => 'http://jd.637pay.com/',
+        Channel::UNIONPAY => 'http://unionpay.637pay.com/',
     ];
 }

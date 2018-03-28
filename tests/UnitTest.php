@@ -33,7 +33,7 @@ class UnitTest extends TestCase
     {
         $faker = Factory::create();
         $tradeNo = date('YmdHis').rand(10000, 99999);
-        $channel = Channel::ALIPAY;
+        $channel = Channel::UNIONPAY;
         $amount = 1;
         $notifyUrl = $faker->url;
         $returnUrl = $faker->url;
@@ -55,7 +55,7 @@ class UnitTest extends TestCase
      */
     public function testDigitalPaymentOrderFind($tradeNo)
     {
-        $channel = Channel::ALIPAY;
+        $channel = Channel::UNIONPAY;
         $amount = 1;
         $payDate = date('Y-m-d');
 
@@ -74,7 +74,7 @@ class UnitTest extends TestCase
      */
     public function testDigitalPaymentOrderIsPaid($tradeNo)
     {
-        $channel = Channel::ALIPAY;
+        $channel = Channel::UNIONPAY;
         $amount = 1;
         $payDate = date('Y-m-d');
 

@@ -23,4 +23,9 @@ class Channel
      * 京東支付
      */
     const JD = 'JD';
+
+    /**
+     * 銀聯錢包
+     */
+    const UNIONPAY = 'UNION_WALLET';
 }
