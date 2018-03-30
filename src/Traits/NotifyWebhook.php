@@ -17,7 +17,7 @@ trait NotifyWebhook
      * @param $secretKey
      * @return bool
      */
-    public function verifyNotifyPayload($payload, $privateKey, $secretKey)
+    public function verifyNotifyPayload($payload, $secretKey, $privateKey)
     {   
         if (!isset($payload['data']))
         {
@@ -42,7 +42,7 @@ trait NotifyWebhook
      * @param $secretKey
      * @return array|null
      */
-    public function parseNotifyPayload($payload, $privateKey, $secretKey)
+    public function parseNotifyPayload($payload, $secretKey, $privateKey)
     {
         if (!isset($payload['data']))
         {
