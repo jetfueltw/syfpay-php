@@ -37,7 +37,7 @@ class RsaCrypt
         foreach (str_split($data, 128) as $chunk) {
             openssl_private_decrypt($chunk, $decryptData, $privateKey);
             $crypto .= $decryptData;
-            var_dump($crypto);
+            
         }
         return $crypto;
     }
