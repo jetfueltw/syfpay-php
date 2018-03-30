@@ -88,35 +88,35 @@ class UnitTest extends TestCase
 
     /* We cannot test it without syfpay's public key*/
 
-    // public function testNotifyWebhookVerifyNotifyPayload()
-    //     {
-    //         $mock = $this->getMockForTrait(NotifyWebhook::class);
+    public function testNotifyWebhookVerifyNotifyPayload()
+        {
+            $mock = $this->getMockForTrait(NotifyWebhook::class);
 
-    //         $payload = [
-    //             'data'          => 'VwbywBPocHXUAKOSly8w%2BvqGRNHg%2FfioIvUTj644ta1wQ6qKjxBSSMPKGHIN3wJYst4bJrQygoAj%0D%0AF88V8hllQUCCh28uHs7GvUp4cezBCNoVDkiNQ9DN2xvuam4lYlp1xXeuyAPDWtPHg3Q7qtxFivNC%0D%0AJDBA9vIc2pq1P997MjqCcoFi4uILZWJZdDJwfIZnYeHo%2F84KMPuVjmNkKQ7eIXXmMvp03OAzW%2BJN%0D%0AyH%2BAtjxBaPueTrFQgQeirdiplaWbYBtez4gdACmC25b6MkaoPdx671%2FnkUPvqOKQWy5b74EZPDCw%0D%0ALCEis4jZ3%2BgU5jSjGnrk%2BVFPJ4DJwFitserT%2Bw%3D%3D',
-    //             'merchNo'       => 'SYF201803080000',
-    //             'orderNum'         => '20170812104118797WlN',
-    //         ];
+            $payload = [
+                'data'          => 'gGPY9mHEo9%2BZPx4uuZZeieYptt%2B%2F1HQEMb3q8OM8XyRU0unfXHypWrRsUWX6tMasdiPZQF7EyNL36%2BaBfugbP5m6MVx6apLUA%2F8FmFArAcwtRlgROjugwqQfmYFEKt%2FHZwwEbvRnRvY7FHIEUQoOHeYr1efAbdd5tV%2BV9jPTjzSImbvBE5ZdLjw0rRly38d4JPyb1lY0%2FFkTdZL7z7tNNWur3ouX5ogKvnvFvphJdqiEOJhbmjB7BQd9uyUyCGrjt4vOWXk2DElxWWsk2%2Fc96qdpMk0IUnzuCg0uul9i%2FUwXY%2FnJHtnFzE2GGBKrDWPRzqa2eRSN%2FXjrGh%2BkiPAXLQ%3D%3D',
+                'merchNo'       => 'SYF201803260287',
+                'orderNum'         => '201803301431009749',
+            ];
 
-    //         $this->assertTrue($mock->verifyNotifyPayload($payload, $this->merchantPrivateKey, $this->secretKey));
-    //     }
-    // public function testNotifyWebhookParseNotifyPayload()
-    //     {
-    //         $mock = $this->getMockForTrait(NotifyWebhook::class);
+            $this->assertTrue($mock->verifyNotifyPayload($payload, $this->merchantPrivateKey, $this->secretKey));
+        }
+    public function testNotifyWebhookParseNotifyPayload()
+        {
+            $mock = $this->getMockForTrait(NotifyWebhook::class);
 
-    //         $payload = [
-    //             'data'          => 'VwbywBPocHXUAKOSly8w%2BvqGRNHg%2FfioIvUTj644ta1wQ6qKjxBSSMPKGHIN3wJYst4bJrQygoAj%0D%0AF88V8hllQUCCh28uHs7GvUp4cezBCNoVDkiNQ9DN2xvuam4lYlp1xXeuyAPDWtPHg3Q7qtxFivNC%0D%0AJDBA9vIc2pq1P997MjqCcoFi4uILZWJZdDJwfIZnYeHo%2F84KMPuVjmNkKQ7eIXXmMvp03OAzW%2BJN%0D%0AyH%2BAtjxBaPueTrFQgQeirdiplaWbYBtez4gdACmC25b6MkaoPdx671%2FnkUPvqOKQWy5b74EZPDCw%0D%0ALCEis4jZ3%2BgU5jSjGnrk%2BVFPJ4DJwFitserT%2Bw%3D%3D',
-    //             'merchNo'       => 'SYF201803080000',
-    //             'orderNum'      => '20170812104118797WlN',
-    //         ];
-    //         $this->assertEquals('00',$mock->parseNotifyPayload($payload, $this->merchantPrivateKey, $this->secretKey)['payResult']);
-    //     }
+            $payload = [
+                'data'          => 'gGPY9mHEo9%2BZPx4uuZZeieYptt%2B%2F1HQEMb3q8OM8XyRU0unfXHypWrRsUWX6tMasdiPZQF7EyNL36%2BaBfugbP5m6MVx6apLUA%2F8FmFArAcwtRlgROjugwqQfmYFEKt%2FHZwwEbvRnRvY7FHIEUQoOHeYr1efAbdd5tV%2BV9jPTjzSImbvBE5ZdLjw0rRly38d4JPyb1lY0%2FFkTdZL7z7tNNWur3ouX5ogKvnvFvphJdqiEOJhbmjB7BQd9uyUyCGrjt4vOWXk2DElxWWsk2%2Fc96qdpMk0IUnzuCg0uul9i%2FUwXY%2FnJHtnFzE2GGBKrDWPRzqa2eRSN%2FXjrGh%2BkiPAXLQ%3D%3D',
+                'merchNo'       => 'SYF201803260287',
+                'orderNum'      => '201803301431009749',
+            ];
+            $this->assertEquals('00',$mock->parseNotifyPayload($payload, $this->merchantPrivateKey, $this->secretKey)['payResult']);
+        }
 
 
-    // public function testNotifyWebhookSuccessNotifyResponse()
-    //     {
-    //         $mock = $this->getMockForTrait(NotifyWebhook::class);
+    public function testNotifyWebhookSuccessNotifyResponse()
+        {
+            $mock = $this->getMockForTrait(NotifyWebhook::class);
 
-    //         $this->assertEquals('0', $mock->successNotifyResponse());
-    //     }
+            $this->assertEquals('0', $mock->successNotifyResponse());
+        }
 }

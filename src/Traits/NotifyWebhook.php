@@ -26,7 +26,7 @@ trait NotifyWebhook
         else
         {
             $data = RsaCrypt::rsaDecrypt(urldecode($payload['data']), $privateKey);
-
+            
             $aryData = json_decode($data,true);
             $signature = $aryData['sign'];
             unset($aryData['sign']);
