@@ -19,19 +19,18 @@ trait NotifyWebhook
      */
     public function verifyNotifyPayload($payload, $secretKey, $privateKey)
     {   
-        if (!isset($payload['data']))
-        {
+
+        if (!isset($payload['data'])) {
             return false;
         }
-        else
-        {
-            $data = RsaCrypt::rsaDecrypt(urldecode($payload['data']), $privateKey);
-            
-            $aryData = json_decode($data,true);
-            $signature = $aryData['sign'];
-            unset($aryData['sign']);
-            return Signature::validate($aryData, $secretKey, $signature);
-        }
+
+        $data = RsaCrypt::rsaDecrypt($payload['data'], $privateKey);
+        $aryData = json_decode($data,true);
+        $signature = $aryData['sign'];
+        unset($aryData['sign']);
+        
+        return Signature::validate($aryData, $secretKey, $signature);
+    
     }
 
     /**
@@ -49,7 +48,7 @@ trait NotifyWebhook
             return null;
         }
   
-        $data = RsaCrypt::rsaDecrypt(urldecode($payload['data']), $privateKey);
+        $data = RsaCrypt::rsaDecrypt($payload['data'], $privateKey);
         $aryData = json_decode($data,true);
         $signature = $aryData['sign'];
         unset($aryData['sign']);

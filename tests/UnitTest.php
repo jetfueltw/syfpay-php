@@ -27,6 +27,7 @@ class UnitTest extends TestCase
         $this->secretKey = getenv('MD5_KEY');
         $this->merchantPrivateKey = getenv('MERCHANT_PRIVATE_KEY');
         $this->merchantPayPublicKey = getenv('MERCHANT_PAY_PUBLIC_KEY');
+
     }
 
     public function testDigitalPaymentOrder()
@@ -38,10 +39,10 @@ class UnitTest extends TestCase
         $notifyUrl = $faker->url;
         $returnUrl = $faker->url;
 
-    $payment = new DigitalPayment($this->merchantId, $this->secretKey, $this->merchantPrivateKey, $this->merchantPayPublicKey/*, 'http://wx.637pay.com/'*/);
+        $payment = new DigitalPayment($this->merchantId, $this->secretKey, $this->merchantPrivateKey, $this->merchantPayPublicKey/*, 'http://wx.637pay.com/'*/);
         $result = $payment->order($tradeNo, $channel, $amount, $notifyUrl, $returnUrl);
 
-        var_dump($result);
+        // var_dump($result);
 
         $this->assertEquals('00', $result['stateCode']);
 
@@ -59,11 +60,11 @@ class UnitTest extends TestCase
         $amount = 1;
         $payDate = date('Y-m-d');
 
-    $tradeQuery = new TradeQuery($this->merchantId, $this->secretKey, $this->merchantPrivateKey, $this->merchantPayPublicKey/*, 'http://wx.637pay.com/'*/); 
+        $tradeQuery = new TradeQuery($this->merchantId, $this->secretKey, $this->merchantPrivateKey, $this->merchantPayPublicKey/*, 'http://wx.637pay.com/'*/); 
         $result = $tradeQuery->find($tradeNo, $channel, $amount, $payDate);
-        
 
-        var_dump($result);
+        // var_dump($result);
+
         $this->assertEquals('00', $result['stateCode']);
     }
 
@@ -78,10 +79,10 @@ class UnitTest extends TestCase
         $amount = 1;
         $payDate = date('Y-m-d');
 
-    $tradeQuery = new TradeQuery($this->merchantId, $this->secretKey, $this->merchantPrivateKey, $this->merchantPayPublicKey/*, 'http://wx.637pay.com/'*/);
+        $tradeQuery = new TradeQuery($this->merchantId, $this->secretKey, $this->merchantPrivateKey, $this->merchantPayPublicKey/*, 'http://wx.637pay.com/'*/);
         $result = $tradeQuery->isPaid($tradeNo, $channel, $amount, $payDate);
 
-        var_dump($result);
+        // var_dump($result);
 
         $this->assertFalse($result);
     }
@@ -89,26 +90,28 @@ class UnitTest extends TestCase
     /* We cannot test it without syfpay's public key*/
 
     public function testNotifyWebhookVerifyNotifyPayload()
-        {
-            $mock = $this->getMockForTrait(NotifyWebhook::class);
+    {
+        $mock = $this->getMockForTrait(NotifyWebhook::class);
 
-            $payload = [
-                'data'          => 'gGPY9mHEo9%2BZPx4uuZZeieYptt%2B%2F1HQEMb3q8OM8XyRU0unfXHypWrRsUWX6tMasdiPZQF7EyNL36%2BaBfugbP5m6MVx6apLUA%2F8FmFArAcwtRlgROjugwqQfmYFEKt%2FHZwwEbvRnRvY7FHIEUQoOHeYr1efAbdd5tV%2BV9jPTjzSImbvBE5ZdLjw0rRly38d4JPyb1lY0%2FFkTdZL7z7tNNWur3ouX5ogKvnvFvphJdqiEOJhbmjB7BQd9uyUyCGrjt4vOWXk2DElxWWsk2%2Fc96qdpMk0IUnzuCg0uul9i%2FUwXY%2FnJHtnFzE2GGBKrDWPRzqa2eRSN%2FXjrGh%2BkiPAXLQ%3D%3D',
-                'merchNo'       => 'SYF201803260287',
-                'orderNum'         => '201803301431009749',
-            ];
+        $payload = [
+            'data'          => 'aj0eeK+Bli058HoX/aMz5yac4aQcFlO7FkAR3OjoIG3ssRSSDliUDMrMER4rO7VTKe6UhToVTxUP4HE/NMbns0C1wTyu9qS+mHrviR1TS0rB2P+KAfl/kmH99CW8+kCL5itP2kujPgZPR8CuqeW3LxzdHuSGoqAWnsRND7tGVPty/pIeI9kcu5/m5kYF7OWtQZxceFEbuXKEqaV5GD1w02eQbPUADHbAyJ/gYkittsOrIxXJk/Hc5dImHv9+YJuDUe2OygTQcYljvziGQ6KpeVeKeqjWqyAUz8xExobPE2oaxIOY/DKARbD1N7O5lmBq8ZLb8KjSzRvODIOGB8Tg0w==',
+            'merchNo'       => 'SYF201803260287',
+            'orderNum'         => '201804021447049639',
+        ];
 
-            $this->assertTrue($mock->verifyNotifyPayload($payload, $this->secretKey, $this->merchantPrivateKey));
-        }
+        $this->assertTrue($mock->verifyNotifyPayload($payload, $this->secretKey, $this->merchantPrivateKey));
+    }
+
     public function testNotifyWebhookParseNotifyPayload()
         {
             $mock = $this->getMockForTrait(NotifyWebhook::class);
 
             $payload = [
-                'data'          => 'gGPY9mHEo9%2BZPx4uuZZeieYptt%2B%2F1HQEMb3q8OM8XyRU0unfXHypWrRsUWX6tMasdiPZQF7EyNL36%2BaBfugbP5m6MVx6apLUA%2F8FmFArAcwtRlgROjugwqQfmYFEKt%2FHZwwEbvRnRvY7FHIEUQoOHeYr1efAbdd5tV%2BV9jPTjzSImbvBE5ZdLjw0rRly38d4JPyb1lY0%2FFkTdZL7z7tNNWur3ouX5ogKvnvFvphJdqiEOJhbmjB7BQd9uyUyCGrjt4vOWXk2DElxWWsk2%2Fc96qdpMk0IUnzuCg0uul9i%2FUwXY%2FnJHtnFzE2GGBKrDWPRzqa2eRSN%2FXjrGh%2BkiPAXLQ%3D%3D',
+                'data'          => 'aj0eeK+Bli058HoX/aMz5yac4aQcFlO7FkAR3OjoIG3ssRSSDliUDMrMER4rO7VTKe6UhToVTxUP4HE/NMbns0C1wTyu9qS+mHrviR1TS0rB2P+KAfl/kmH99CW8+kCL5itP2kujPgZPR8CuqeW3LxzdHuSGoqAWnsRND7tGVPty/pIeI9kcu5/m5kYF7OWtQZxceFEbuXKEqaV5GD1w02eQbPUADHbAyJ/gYkittsOrIxXJk/Hc5dImHv9+YJuDUe2OygTQcYljvziGQ6KpeVeKeqjWqyAUz8xExobPE2oaxIOY/DKARbD1N7O5lmBq8ZLb8KjSzRvODIOGB8Tg0w==',
                 'merchNo'       => 'SYF201803260287',
-                'orderNum'      => '201803301431009749',
+                'orderNum'         => '201804021447049639',    
             ];
+    
             $this->assertEquals('00',$mock->parseNotifyPayload($payload, $this->secretKey, $this->merchantPrivateKey)['payResult']);
         }
 

@@ -32,13 +32,14 @@ class RsaCrypt
         $privateKey = openssl_get_privatekey($privateKey);
 
         $data = base64_decode($payload);
-        
+
         $crypto = '';
         foreach (str_split($data, 128) as $chunk) {
             openssl_private_decrypt($chunk, $decryptData, $privateKey);
             $crypto .= $decryptData;
             
         }
+
         return $crypto;
     }
 }
